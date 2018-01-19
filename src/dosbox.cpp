@@ -467,7 +467,7 @@ void DOSBOX_Init(void) {
 	
 	const char* mputypes[] = { "intelligent", "uart", "none",0};
 	// FIXME: add some way to offer the actually available choices.
-	const char *devices[] = { "default", "win32", "alsa", "oss", "coreaudio", "coremidi","none", 0};
+	const char *devices[] = { "default", "win32", "alsa", "oss", "coreaudio", "coremidi", "mt32", "none", 0};
 	Pstring = secprop->Add_string("mpu401",Property::Changeable::WhenIdle,"intelligent");
 	Pstring->Set_values(mputypes);
 	Pstring->Set_help("Type of MPU-401 to emulate.");
@@ -479,6 +479,8 @@ void DOSBOX_Init(void) {
 	Pstring = secprop->Add_string("midiconfig",Property::Changeable::WhenIdle,"");
 	Pstring->Set_help("Special configuration options for the device driver. This is usually the id of the device you want to use.\n"
 	                  "  See the README/Manual for more details.");
+
+#include "mt32options.h"
 
 #if C_DEBUG
 	secprop=control->AddSection_prop("debug",&DEBUG_Init);
